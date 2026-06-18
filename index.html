@@ -46,7 +46,7 @@
     <header id="navbar" class="navbar">
         <div class="container navbar__container">
             <a href="#inicio" class="navbar__logo">
-                <span class="navbar__logo-text">TurismoApp</span>
+                <span class="navbar__logo-text" data-config="empresa">TurismoApp</span>
             </a>
             <nav class="navbar__menu" id="navMenu">
                 <ul class="navbar__list">
@@ -73,8 +73,8 @@
         <section id="inicio" class="hero">
             <div class="hero__overlay"></div>
             <div class="container hero__content">
-                <h1 class="hero__title">Nombre de la Empresa</h1>
-                <p class="hero__subtitle">Descubre los mejores destinos de [Región/Zona]</p>
+                <h1 class="hero__title" data-config="empresa">Nombre de la Empresa</h1>
+                <p class="hero__subtitle" data-config="slogan">Descubre los mejores destinos de [Región/Zona]</p>
                 <div class="hero__buttons">
                     <a href="#destinos" class="btn btn--primary">Explorar Destinos</a>
                     <a href="#contacto" class="btn btn--secondary">Contáctanos</a>
@@ -92,22 +92,22 @@
             <div class="container stats__container">
                 <div class="stats__item" data-aos="flip-up">
                     <i class="fa-solid fa-users"></i>
-                    <span class="stats__number" data-target="500">0</span>
+                    <span class="stats__number" data-target="500" data-config-target="statViajeros">0</span>
                     <p class="stats__label">Viajeros Felices</p>
                 </div>
                 <div class="stats__item" data-aos="flip-up" data-aos-delay="100">
                     <i class="fa-solid fa-map-location-dot"></i>
-                    <span class="stats__number" data-target="50">0</span>
+                    <span class="stats__number" data-target="50" data-config-target="statDestinos">0</span>
                     <p class="stats__label">Destinos</p>
                 </div>
                 <div class="stats__item" data-aos="flip-up" data-aos-delay="200">
                     <i class="fa-solid fa-award"></i>
-                    <span class="stats__number" data-target="10">0</span>
+                    <span class="stats__number" data-target="10" data-config-target="statAnios">0</span>
                     <p class="stats__label">Años de Experiencia</p>
                 </div>
                 <div class="stats__item" data-aos="flip-up" data-aos-delay="300">
                     <i class="fa-solid fa-star"></i>
-                    <span class="stats__number" data-target="100">0</span>
+                    <span class="stats__number" data-target="100" data-config-target="statRecomendados">0</span>
                     <p class="stats__label">Recomendados</p>
                 </div>
             </div>
@@ -382,35 +382,35 @@
                             <i class="fa-solid fa-phone"></i>
                             <div>
                                 <h4>Teléfono</h4>
-                                <p>+56 9 XXXX XXXX</p>
+                                <p data-config="telefono">+56 9 XXXX XXXX</p>
                             </div>
                         </div>
                         <div class="contacto__info-item">
                             <i class="fa-solid fa-envelope"></i>
                             <div>
                                 <h4>Email</h4>
-                                <p>contacto@tuempresa.com</p>
+                                <p data-config="email">contacto@tuempresa.com</p>
                             </div>
                         </div>
                         <div class="contacto__info-item">
                             <i class="fa-solid fa-location-dot"></i>
                             <div>
                                 <h4>Dirección</h4>
-                                <p>Calle Principal #123, Ciudad, País</p>
+                                <p data-config="direccion">Calle Principal #123, Ciudad, País</p>
                             </div>
                         </div>
                         <div class="contacto__info-item">
                             <i class="fa-solid fa-clock"></i>
                             <div>
                                 <h4>Horario</h4>
-                                <p>Lunes a Viernes: 9:00 - 18:00</p>
-                                <p>Sábado: 9:00 - 13:00</p>
+                                <p data-config="horario">Lunes a Viernes: 9:00 - 18:00</p>
+                                <p data-config="horario2">Sábado: 9:00 - 13:00</p>
                             </div>
                         </div>
                         <div class="contacto__social">
-                            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-                            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                            <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                            <a href="#" aria-label="Facebook" data-config-href="facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a href="#" aria-label="Instagram" data-config-href="instagram"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="#" aria-label="TikTok" data-config-href="tiktok"><i class="fa-brands fa-tiktok"></i></a>
                         </div>
                     </div>
                     <!-- Columna formulario -->
@@ -458,6 +458,7 @@
         <!-- ========== MAPA ========== -->
         <section id="mapa" class="mapa">
             <iframe
+                id="mapaIframe"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3329.6!2d-70.65!3d-33.45!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzPCsDI3JzAwLjAiUyA3MMKwMzknMDAuMCJX!5e0!3m2!1ses!2scl!4v1"
                 allowfullscreen=""
                 loading="lazy"
@@ -471,12 +472,12 @@
     <footer class="footer">
         <div class="container footer__container">
             <div class="footer__brand">
-                <span class="footer__logo">TurismoApp</span>
-                <p class="footer__desc">Conectamos viajeros con experiencias únicas en los destinos más impresionantes. Tu próxima aventura comienza aquí.</p>
+                <span class="footer__logo" data-config="empresa">TurismoApp</span>
+                <p class="footer__desc" data-config="descripcion">Conectamos viajeros con experiencias únicas en los destinos más impresionantes. Tu próxima aventura comienza aquí.</p>
                 <div class="footer__social">
-                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="#" aria-label="Facebook" data-config-href="facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram" data-config-href="instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="TikTok" data-config-href="tiktok"><i class="fa-brands fa-tiktok"></i></a>
                 </div>
             </div>
             <div class="footer__links">
@@ -492,22 +493,22 @@
             <div class="footer__contact">
                 <h4 class="footer__title">Contacto</h4>
                 <ul>
-                    <li><i class="fa-solid fa-phone"></i> +56 9 XXXX XXXX</li>
-                    <li><i class="fa-solid fa-envelope"></i> contacto@tuempresa.com</li>
-                    <li><i class="fa-solid fa-location-dot"></i> Ciudad, País</li>
+                    <li><i class="fa-solid fa-phone"></i> <span data-config="telefono">+56 9 XXXX XXXX</span></li>
+                    <li><i class="fa-solid fa-envelope"></i> <span data-config="email">contacto@tuempresa.com</span></li>
+                    <li><i class="fa-solid fa-location-dot"></i> <span data-config="ciudad">Ciudad, País</span></li>
                 </ul>
             </div>
         </div>
         <div class="footer__bottom">
             <div class="container">
-                <p>&copy; 2025 Nombre Empresa. Todos los derechos reservados.</p>
-                <p class="footer__credit">Desarrollado por <a href="#">Tu Nombre</a></p>
+                <p data-config="copyright">&copy; 2025 Nombre Empresa. Todos los derechos reservados.</p>
+                <p class="footer__credit">Desarrollado por <a href="#" target="_blank" rel="noopener noreferrer" id="devLink" data-config="desarrollador">Tu</a></p>
             </div>
         </div>
     </footer>
 
     <!-- ========== BOTÓN WHATSAPP ========== -->
-    <a href="https://wa.me/56954066578?text=Hola!%20Me%20interesa%20conocer%20mas%20sobre%20sus%20tours%20y%20destinos.%20Podrian%20darme%20mas%20informacion?" class="whatsapp-btn" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
+    <a id="whatsappBtn" href="https://wa.me/56954066578?text=Hola!%20Me%20interesa%20conocer%20mas%20sobre%20sus%20tours%20y%20destinos.%20Podrian%20darme%20mas%20informacion?" class="whatsapp-btn" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
         <i class="fa-brands fa-whatsapp"></i>
         <span class="whatsapp-btn__tooltip">Chatea con nosotros</span>
     </a>
@@ -520,6 +521,9 @@
 
     <!-- AOS JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+    <!-- Config (editar este archivo para personalizar) -->
+    <script src="js/config.js"></script>
 
     <!-- Custom JS -->
     <script src="js/main.js"></script>

@@ -5,6 +5,51 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
+    // ---- Aplicar CONFIG al DOM ----
+    if (typeof CONFIG !== 'undefined') {
+        // Textos: data-config="key" → textContent = CONFIG[key]
+        document.querySelectorAll('[data-config]').forEach(el => {
+            const key = el.getAttribute('data-config');
+            if (CONFIG[key] !== undefined) {
+                el.textContent = CONFIG[key];
+            }
+        });
+
+        // Links: data-config-href="key" → href = CONFIG[key]
+        document.querySelectorAll('[data-config-href]').forEach(el => {
+            const key = el.getAttribute('data-config-href');
+            if (CONFIG[key] !== undefined) {
+                el.href = CONFIG[key];
+            }
+        });
+
+        // Stats: data-config-target="key" → data-target = CONFIG[key]
+        document.querySelectorAll('[data-config-target]').forEach(el => {
+            const key = el.getAttribute('data-config-target');
+            if (CONFIG[key] !== undefined) {
+                el.setAttribute('data-target', CONFIG[key]);
+            }
+        });
+
+        // WhatsApp
+        const whatsappBtn = document.getElementById('whatsappBtn');
+        if (whatsappBtn && CONFIG.whatsappNumero) {
+            const msg = encodeURIComponent(CONFIG.whatsappMensaje || '');
+            whatsappBtn.href = `https://wa.me/${CONFIG.whatsappNumero}?text=${msg}`;
+        }
+
+        // Mapa
+        const mapaIframe = document.getElementById('mapaIframe');
+        if (mapaIframe && CONFIG.mapaEmbed) {
+            mapaIframe.src = CONFIG.mapaEmbed;
+        }
+
+        // Title del documento
+        if (CONFIG.empresa) {
+            document.title = `${CONFIG.empresa} | Destinos y Experiencias Únicas`;
+        }
+    }
+
     // ---- Loading Screen ----
     const loader = document.getElementById('loader');
     window.addEventListener('load', () => {
