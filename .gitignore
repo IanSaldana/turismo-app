@@ -1,0 +1,14 @@
+# Documentos internos (presupuestos, contratos, info del cliente)
+docs/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+*.swp
+*.swo
+
+# Node (por si se agrega tooling después)
+node_modules/
