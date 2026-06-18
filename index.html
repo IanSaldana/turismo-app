@@ -185,7 +185,27 @@
                     <p class="section__subtitle">Servicios pensados para que disfrutes al máximo</p>
                 </div>
                 <div class="experiencias__grid">
-                    <!-- Bloques se llenan en Fase 4 -->
+                    <div class="experiencia-card" data-aos="fade-right">
+                        <div class="experiencia-card__icon">
+                            <i class="fa-solid fa-mountain-sun"></i>
+                        </div>
+                        <h3 class="experiencia-card__title">Trekking y Aventura</h3>
+                        <p class="experiencia-card__desc">Recorre senderos únicos rodeado de paisajes impresionantes con guías expertos que conocen cada rincón.</p>
+                    </div>
+                    <div class="experiencia-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="experiencia-card__icon">
+                            <i class="fa-solid fa-camera"></i>
+                        </div>
+                        <h3 class="experiencia-card__title">Tours Fotográficos</h3>
+                        <p class="experiencia-card__desc">Captura los mejores momentos en ubicaciones privilegiadas con la guía de fotógrafos profesionales.</p>
+                    </div>
+                    <div class="experiencia-card" data-aos="fade-left" data-aos-delay="200">
+                        <div class="experiencia-card__icon">
+                            <i class="fa-solid fa-utensils"></i>
+                        </div>
+                        <h3 class="experiencia-card__title">Gastronomía Local</h3>
+                        <p class="experiencia-card__desc">Saborea platos típicos de la región en experiencias culinarias auténticas con productores locales.</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -198,7 +218,54 @@
                     <p class="section__subtitle">Momentos que hablan por sí solos</p>
                 </div>
                 <div class="galeria__grid">
-                    <!-- Imágenes se llenan en Fase 4 -->
+                    <div class="galeria__item galeria__item--wide" data-aos="zoom-in">
+                        <div class="galeria__img" style="background: linear-gradient(135deg, #0077B6, #00B4D8);"></div>
+                        <div class="galeria__overlay">
+                            <i class="fa-solid fa-expand"></i>
+                        </div>
+                    </div>
+                    <div class="galeria__item" data-aos="zoom-in" data-aos-delay="50">
+                        <div class="galeria__img" style="background: linear-gradient(135deg, #FF6B35, #FFA962);"></div>
+                        <div class="galeria__overlay">
+                            <i class="fa-solid fa-expand"></i>
+                        </div>
+                    </div>
+                    <div class="galeria__item" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="galeria__img" style="background: linear-gradient(135deg, #1A1A2E, #16213E);"></div>
+                        <div class="galeria__overlay">
+                            <i class="fa-solid fa-expand"></i>
+                        </div>
+                    </div>
+                    <div class="galeria__item" data-aos="zoom-in" data-aos-delay="150">
+                        <div class="galeria__img" style="background: linear-gradient(135deg, #00B4D8, #48CAE4);"></div>
+                        <div class="galeria__overlay">
+                            <i class="fa-solid fa-expand"></i>
+                        </div>
+                    </div>
+                    <div class="galeria__item galeria__item--tall" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="galeria__img" style="background: linear-gradient(135deg, #005F8A, #0077B6);"></div>
+                        <div class="galeria__overlay">
+                            <i class="fa-solid fa-expand"></i>
+                        </div>
+                    </div>
+                    <div class="galeria__item" data-aos="zoom-in" data-aos-delay="250">
+                        <div class="galeria__img" style="background: linear-gradient(135deg, #FF6B35, #0077B6);"></div>
+                        <div class="galeria__overlay">
+                            <i class="fa-solid fa-expand"></i>
+                        </div>
+                    </div>
+                    <div class="galeria__item galeria__item--wide" data-aos="zoom-in" data-aos-delay="300">
+                        <div class="galeria__img" style="background: linear-gradient(135deg, #48CAE4, #0077B6);"></div>
+                        <div class="galeria__overlay">
+                            <i class="fa-solid fa-expand"></i>
+                        </div>
+                    </div>
+                    <div class="galeria__item" data-aos="zoom-in" data-aos-delay="350">
+                        <div class="galeria__img" style="background: linear-gradient(135deg, #1A1A2E, #FF6B35);"></div>
+                        <div class="galeria__overlay">
+                            <i class="fa-solid fa-expand"></i>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -258,6 +325,12 @@
         <i class="fa-brands fa-whatsapp"></i>
         <span class="whatsapp-btn__tooltip">Chatea con nosotros</span>
     </a>
+
+    <!-- ========== LIGHTBOX MODAL ========== -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox__close" id="lightboxClose" aria-label="Cerrar">&times;</button>
+        <div class="lightbox__content" id="lightboxContent"></div>
+    </div>
 
     <!-- AOS JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
