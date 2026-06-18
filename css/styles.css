@@ -1119,13 +1119,13 @@ ul {
     border-radius: var(--radius);
     font-size: 0.85rem;
     white-space: nowrap;
-    opacity: 0;
     pointer-events: none;
-    transition: var(--transition);
 }
 
 .whatsapp-btn:hover .whatsapp-btn__tooltip {
+    animation: none;
     opacity: 1;
+    transform: translateX(0);
 }
 
 /* ============================================
