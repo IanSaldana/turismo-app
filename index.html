@@ -376,25 +376,132 @@
                     <p class="section__subtitle">Estamos listos para planificar tu próxima aventura</p>
                 </div>
                 <div class="contacto__container">
-                    <!-- Formulario y datos se llenan en Fase 6 -->
+                    <!-- Columna info -->
+                    <div class="contacto__info" data-aos="fade-right">
+                        <div class="contacto__info-item">
+                            <i class="fa-solid fa-phone"></i>
+                            <div>
+                                <h4>Teléfono</h4>
+                                <p>+56 9 XXXX XXXX</p>
+                            </div>
+                        </div>
+                        <div class="contacto__info-item">
+                            <i class="fa-solid fa-envelope"></i>
+                            <div>
+                                <h4>Email</h4>
+                                <p>contacto@tuempresa.com</p>
+                            </div>
+                        </div>
+                        <div class="contacto__info-item">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <div>
+                                <h4>Dirección</h4>
+                                <p>Calle Principal #123, Ciudad, País</p>
+                            </div>
+                        </div>
+                        <div class="contacto__info-item">
+                            <i class="fa-solid fa-clock"></i>
+                            <div>
+                                <h4>Horario</h4>
+                                <p>Lunes a Viernes: 9:00 - 18:00</p>
+                                <p>Sábado: 9:00 - 13:00</p>
+                            </div>
+                        </div>
+                        <div class="contacto__social">
+                            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                        </div>
+                    </div>
+                    <!-- Columna formulario -->
+                    <div class="contacto__form-wrapper" data-aos="fade-left">
+                        <form class="contacto__form" name="contacto" method="POST" data-netlify="true" id="contactForm">
+                            <input type="hidden" name="form-name" value="contacto">
+                            <div class="form-group">
+                                <label for="nombre">Nombre completo *</label>
+                                <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email *</label>
+                                <input type="email" id="email" name="email" required placeholder="tu@email.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="telefono">Teléfono</label>
+                                <input type="tel" id="telefono" name="telefono" placeholder="+56 9 XXXX XXXX">
+                            </div>
+                            <div class="form-group">
+                                <label for="asunto">Asunto *</label>
+                                <select id="asunto" name="asunto" required>
+                                    <option value="" disabled selected>Selecciona una opción</option>
+                                    <option value="consulta">Consulta general</option>
+                                    <option value="reserva">Reserva de tour</option>
+                                    <option value="cotizacion">Cotización</option>
+                                    <option value="otro">Otro</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="mensaje">Mensaje *</label>
+                                <textarea id="mensaje" name="mensaje" rows="5" required placeholder="Cuéntanos en qué podemos ayudarte..."></textarea>
+                            </div>
+                            <button type="submit" class="btn btn--primary btn--full">Enviar Mensaje</button>
+                        </form>
+                        <div class="contacto__success" id="formSuccess">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <h3>¡Mensaje enviado!</h3>
+                            <p>Nos pondremos en contacto contigo pronto.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- ========== MAPA ========== -->
         <section id="mapa" class="mapa">
-            <!-- Mapa se llena en Fase 6 -->
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3329.6!2d-70.65!3d-33.45!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzPCsDI3JzAwLjAiUyA3MMKwMzknMDAuMCJX!5e0!3m2!1ses!2scl!4v1"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Ubicación de la empresa">
+            </iframe>
         </section>
     </main>
 
     <!-- ========== FOOTER ========== -->
     <footer class="footer">
         <div class="container footer__container">
-            <!-- Footer se llena en Fase 6 -->
+            <div class="footer__brand">
+                <span class="footer__logo">TurismoApp</span>
+                <p class="footer__desc">Conectamos viajeros con experiencias únicas en los destinos más impresionantes. Tu próxima aventura comienza aquí.</p>
+                <div class="footer__social">
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div class="footer__links">
+                <h4 class="footer__title">Links Rápidos</h4>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#destinos">Destinos</a></li>
+                    <li><a href="#experiencias">Experiencias</a></li>
+                    <li><a href="#nosotros">Nosotros</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer__contact">
+                <h4 class="footer__title">Contacto</h4>
+                <ul>
+                    <li><i class="fa-solid fa-phone"></i> +56 9 XXXX XXXX</li>
+                    <li><i class="fa-solid fa-envelope"></i> contacto@tuempresa.com</li>
+                    <li><i class="fa-solid fa-location-dot"></i> Ciudad, País</li>
+                </ul>
+            </div>
         </div>
         <div class="footer__bottom">
             <div class="container">
                 <p>&copy; 2025 Nombre Empresa. Todos los derechos reservados.</p>
+                <p class="footer__credit">Desarrollado por <a href="#">Tu Nombre</a></p>
             </div>
         </div>
     </footer>
