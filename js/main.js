@@ -93,4 +93,44 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('scroll', handleScrollSpy);
 
+    // ---- Contadores animados ----
+    const counters = document.querySelectorAll('.stats__number');
+    let countersAnimated = false;
+
+    function animateCounters() {
+        counters.forEach(counter => {
+            const target = +counter.getAttribute('data-target');
+            const duration = 2000;
+            const step = target / (duration / 16);
+            let current = 0;
+
+            const updateCounter = () => {
+                current += step;
+                if (current < target) {
+                    counter.textContent = Math.floor(current);
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    counter.textContent = target;
+                }
+            };
+
+            updateCounter();
+        });
+    }
+
+    // Observar cuando la sección stats entra en pantalla
+    const statsSection = document.querySelector('.stats');
+    if (statsSection) {
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !countersAnimated) {
+                    countersAnimated = true;
+                    animateCounters();
+                }
+            });
+        }, { threshold: 0.3 });
+
+        statsObserver.observe(statsSection);
+    }
+
 });

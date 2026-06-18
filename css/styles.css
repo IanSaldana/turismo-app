@@ -381,6 +381,29 @@ ul {
     color: var(--color-white);
 }
 
+.stats__item i {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    opacity: 0.85;
+}
+
+.stats__number {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.stats__number::before {
+    content: '+';
+}
+
+.stats__label {
+    font-size: 0.95rem;
+    opacity: 0.85;
+    margin-top: 0.25rem;
+}
+
 /* ============================================
    DESTINOS
    ============================================ */
@@ -388,6 +411,81 @@ ul {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
+}
+
+.destino-card {
+    background: var(--color-white);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+}
+
+.destino-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+}
+
+.destino-card__img {
+    height: 200px;
+    background: linear-gradient(135deg, var(--color-secondary), var(--color-primary));
+    position: relative;
+}
+
+.destino-card__badge {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background-color: var(--color-accent);
+    color: var(--color-white);
+    padding: 0.3rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.destino-card__body {
+    padding: 1.5rem;
+}
+
+.destino-card__title {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--color-dark);
+}
+
+.destino-card__desc {
+    font-size: 0.9rem;
+    color: var(--color-gray);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.destino-card__meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.25rem;
+    font-size: 0.85rem;
+    color: var(--color-gray);
+}
+
+.destino-card__meta i {
+    color: var(--color-accent);
+    margin-right: 0.3rem;
+}
+
+.destino-card__price {
+    font-weight: 600;
+    color: var(--color-primary);
+}
+
+.btn--sm {
+    padding: 0.6rem 1.5rem;
+    font-size: 0.85rem;
 }
 
 /* ============================================
