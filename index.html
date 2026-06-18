@@ -36,11 +36,17 @@
 </head>
 <body>
 
+    <!-- ========== LOADING SCREEN ========== -->
+    <div class="loader" id="loader">
+        <div class="loader__spinner"></div>
+        <p class="loader__text">Cargando experiencias...</p>
+    </div>
+
     <!-- ========== NAVBAR ========== -->
     <header id="navbar" class="navbar">
         <div class="container navbar__container">
             <a href="#inicio" class="navbar__logo">
-                <img src="img/logo.png" alt="Logo Empresa Turismo">
+                <span class="navbar__logo-text">TurismoApp</span>
             </a>
             <nav class="navbar__menu" id="navMenu">
                 <ul class="navbar__list">
@@ -59,6 +65,9 @@
         </div>
     </header>
 
+    <!-- Overlay para menú móvil -->
+    <div class="navbar__overlay" id="navOverlay"></div>
+
     <main>
         <!-- ========== HERO ========== -->
         <section id="inicio" class="hero">
@@ -70,6 +79,11 @@
                     <a href="#destinos" class="btn btn--primary">Explorar Destinos</a>
                     <a href="#contacto" class="btn btn--secondary">Contáctanos</a>
                 </div>
+            </div>
+            <!-- Indicador de scroll -->
+            <div class="hero__scroll-indicator">
+                <span>Scroll</span>
+                <i class="fa-solid fa-chevron-down"></i>
             </div>
         </section>
 

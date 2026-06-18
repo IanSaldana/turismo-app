@@ -5,6 +5,14 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
+    // ---- Loading Screen ----
+    const loader = document.getElementById('loader');
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            loader.classList.add('loader--hidden');
+        }, 500);
+    });
+
     // ---- Inicializar AOS ----
     AOS.init({
         duration: 800,
@@ -15,12 +23,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ---- Navbar scroll effect ----
     const navbar = document.getElementById('navbar');
+    const scrollIndicator = document.querySelector('.hero__scroll-indicator');
 
     function handleNavbarScroll() {
         if (window.scrollY > 50) {
             navbar.classList.add('navbar--scrolled');
         } else {
             navbar.classList.remove('navbar--scrolled');
+        }
+
+        // Ocultar indicador de scroll al bajar
+        if (scrollIndicator) {
+            if (window.scrollY > 200) {
+                scrollIndicator.classList.add('hidden');
+            } else {
+                scrollIndicator.classList.remove('hidden');
+            }
         }
     }
 
@@ -29,18 +47,25 @@ document.addEventListener('DOMContentLoaded', () => {
     // ---- Menú móvil ----
     const navToggle = document.getElementById('navToggle');
     const navMenu = document.getElementById('navMenu');
+    const navOverlay = document.getElementById('navOverlay');
 
-    navToggle.addEventListener('click', () => {
+    function toggleMenu() {
         navToggle.classList.toggle('active');
         navMenu.classList.toggle('active');
-    });
+        navOverlay.classList.toggle('active');
+        document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+    }
+
+    navToggle.addEventListener('click', toggleMenu);
+    navOverlay.addEventListener('click', toggleMenu);
 
     // Cerrar menú al hacer clic en un link
     const navLinks = document.querySelectorAll('.navbar__link');
     navLinks.forEach(link => {
         link.addEventListener('click', () => {
-            navToggle.classList.remove('active');
-            navMenu.classList.remove('active');
+            if (navMenu.classList.contains('active')) {
+                toggleMenu();
+            }
         });
     });
 
