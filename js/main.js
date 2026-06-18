@@ -173,4 +173,41 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // ---- Slider Testimonios ----
+    const testimonioCards = document.querySelectorAll('.testimonio-card');
+    const dots = document.querySelectorAll('.testimonios__dot');
+    const btnPrev = document.querySelector('.testimonios__btn--prev');
+    const btnNext = document.querySelector('.testimonios__btn--next');
+    let currentSlide = 0;
+
+    function showSlide(index) {
+        testimonioCards.forEach(card => card.classList.remove('testimonio-card--active'));
+        dots.forEach(dot => dot.classList.remove('active'));
+
+        currentSlide = (index + testimonioCards.length) % testimonioCards.length;
+        testimonioCards[currentSlide].classList.add('testimonio-card--active');
+        dots[currentSlide].classList.add('active');
+    }
+
+    if (btnNext && btnPrev) {
+        btnNext.addEventListener('click', () => showSlide(currentSlide + 1));
+        btnPrev.addEventListener('click', () => showSlide(currentSlide - 1));
+    }
+
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => showSlide(index));
+    });
+
+    // Auto-play cada 5 segundos
+    let sliderInterval = setInterval(() => showSlide(currentSlide + 1), 5000);
+
+    // Pausar auto-play al interactuar
+    const sliderContainer = document.querySelector('.testimonios__slider');
+    if (sliderContainer) {
+        sliderContainer.addEventListener('mouseenter', () => clearInterval(sliderInterval));
+        sliderContainer.addEventListener('mouseleave', () => {
+            sliderInterval = setInterval(() => showSlide(currentSlide + 1), 5000);
+        });
+    }
+
 });
