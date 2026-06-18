@@ -13,8 +13,8 @@ const CONFIG = {
     descripcion: "Conectamos viajeros con experiencias únicas en los destinos más impresionantes. Tu próxima aventura comienza aquí.",
 
     // ---- CONTACTO ----
-    telefono: "+56 9 XXXX XXXX",
-    email: "contacto@turismobrioneshernandez.com",
+    telefono: "+56 9 54066578",
+    email: "ian.saldana2608@gmail.com",
     direccion: "Calle Principal #123, Puerto Montt, Chile",
     ciudad: "Puerto Montt, Chile",
     horario: "Lunes a Viernes: 9:00 - 18:00",
@@ -97,13 +97,13 @@ const CONFIG = {
         {
             texto: "Los guías son extraordinarios, conocen cada rincón y te hacen sentir seguro en todo momento. La mejor decisión que tomamos para nuestras vacaciones.",
             nombre: "Carlos Rodríguez",
-            origen: "Buenos Aires, Argentina",
+            origen: "Santiago, Chile",
             estrellas: 5
         },
         {
             texto: "Desde la reserva hasta el último día todo fue perfecto. Grupos pequeños, atención personalizada y destinos que no encontrarías por tu cuenta.",
             nombre: "Ana Martínez",
-            origen: "Lima, Perú",
+            origen: "Santiago, Chile",
             estrellas: 5
         }
     ],
