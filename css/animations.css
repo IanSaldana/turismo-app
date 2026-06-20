@@ -1,53 +1,88 @@
 /* ============================================
-   ANIMATIONS.CSS — GSAP-driven motion support
-   Base states and utility classes for 
-   scroll-triggered animations.
+   ANIMATIONS.CSS — GSAP Initial States
+   Elements start hidden and are revealed by GSAP
    ============================================ */
 
-/* Hero entry — initial hidden state, GSAP animates in */
+/* Hero elements */
 .hero__label,
 .hero__title,
 .hero__subtitle,
-.hero__cta {
+.hero__ctas {
     opacity: 0;
-    transform: translateY(16px);
+    transform: translateY(24px);
 }
 
-/* SVG coastline stroke — JS sets actual dasharray */
-.costa-draw__line {
-    stroke-dasharray: 2000;
-    stroke-dashoffset: 2000;
+.hero__scroll-indicator {
+    opacity: 0;
 }
 
-/* Servicio cards — 3D tilt support */
-.servicio-card {
-    backface-visibility: hidden;
+/* Service panels (all but first start hidden) */
+.servicios__panel:not(:first-child) {
+    opacity: 0;
 }
 
-.servicio-card__icon {
-    transition: transform 0.3s ease, background-color 0.3s ease;
+/* Diferenciadores */
+.diferenciador {
+    opacity: 0;
+    transform: translateY(40px);
 }
 
-.servicio-card:hover .servicio-card__icon {
-    background: rgba(61, 90, 91, 0.14);
-    transform: scale(1.1);
+/* Testimonios */
+.testimonio {
+    opacity: 0;
+    transform: translateY(30px);
 }
 
-/* Destino cards — hover lift */
-.destino-card {
-    will-change: transform, opacity;
+/* Contact form fields */
+.contacto__form .form-group {
+    opacity: 0;
+    transform: translateY(20px);
 }
 
-.destino-card__img {
-    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+.contacto__form .btn {
+    opacity: 0;
+    transform: translateY(20px);
 }
 
-.destino-card:hover .destino-card__img {
-    transform: scale(1.04);
+/* WhatsApp button */
+.whatsapp-btn {
+    opacity: 0;
+    transform: scale(0.8) translateY(20px);
 }
 
-/* Gallery items — zoom on hover */
-.galeria__item {
+/* Mobile menu links */
+.mobile-menu__link {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.mobile-menu__footer {
+    opacity: 0;
+}
+
+/* Route line */
+.route-line__path {
+    stroke-dasharray: var(--route-length, 5000);
+    stroke-dashoffset: var(--route-length, 5000);
+}
+
+.route-line__station {
+    transform: scale(0);
+}
+
+/* Section headers */
+.section__header {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+/* Will-change hints for animated elements */
+.hero__label,
+.hero__title,
+.hero__subtitle,
+.hero__ctas,
+.servicios__panel,
+.route-line__path {
     will-change: transform, opacity;
 }
 
@@ -55,19 +90,4 @@
 .btn--primary {
     will-change: transform;
     position: relative;
-}
-
-/* Navbar transition for compact state */
-.navbar__logo-img {
-    transition: height 0.3s ease;
-}
-
-/* Smooth opacity transition for testimonial rotation */
-.testimonio__text {
-    transition: opacity 0.4s ease;
-}
-
-/* Divider SVG paths */
-.divider-costa path {
-    transform-origin: left center;
 }
