@@ -199,6 +199,7 @@ input, select, textarea {
     z-index: 100;
     background: var(--color-bosque);
     padding: 1rem 0;
+    transition: padding 0.3s ease;
 }
 
 .navbar__container {
@@ -282,6 +283,15 @@ input, select, textarea {
 
 .navbar__overlay.active {
     display: block;
+}
+
+/* Navbar compact state (on scroll) */
+.navbar--compact {
+    padding: 0.6rem 0;
+}
+
+.navbar--compact .navbar__logo-img {
+    height: 32px;
 }
 
 /* ============================================
@@ -453,11 +463,12 @@ input, select, textarea {
     padding: var(--space-lg);
     border: 1px solid rgba(61, 90, 91, 0.06);
     transition: box-shadow 0.3s ease, transform 0.3s ease;
+    will-change: transform;
+    transform-style: preserve-3d;
 }
 
 .servicio-card:hover {
-    box-shadow: var(--shadow-md);
-    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
 }
 
 .servicio-card--destacado {
