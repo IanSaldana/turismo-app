@@ -1,120 +1,34 @@
 /* ============================================
-   ANIMACIONES CUSTOM
-   Complementa las animaciones de AOS
+   ANIMATIONS — Briones Hernández
+   Minimal: only the coastline SVG draw
+   and functional transitions.
    ============================================ */
 
-/* Hero - Efecto cascada de entrada */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
+/* Hero entry — staggered fade for content */
+.hero__label,
+.hero__title,
+.hero__subtitle,
+.hero__cta {
+    opacity: 0;
+    transform: translateY(12px);
+    animation: fadeIn 0.6s ease-out forwards;
+}
+
+.hero__label { animation-delay: 0.3s; }
+.hero__title { animation-delay: 0.5s; }
+.hero__subtitle { animation-delay: 0.7s; }
+.hero__cta { animation-delay: 0.9s; }
+
+@keyframes fadeIn {
     to {
         opacity: 1;
         transform: translateY(0);
     }
 }
 
-.hero__title {
-    animation: fadeInUp 0.8s ease forwards;
-}
-
-.hero__subtitle {
-    opacity: 0;
-    animation: fadeInUp 0.8s ease 0.2s forwards;
-}
-
-.hero__buttons {
-    opacity: 0;
-    animation: fadeInUp 0.8s ease 0.4s forwards;
-}
-
-/* WhatsApp - Pulso continuo */
-@keyframes pulse {
-    0% {
-        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5);
-    }
-    70% {
-        box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
-    }
-    100% {
-        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
-    }
-}
-
-.whatsapp-btn {
-    animation: pulse 2s infinite;
-}
-
-/* Tooltip WhatsApp - aparecer/desaparecer */
-@keyframes tooltipFade {
-    0%, 80% {
-        opacity: 0;
-    }
-    90% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-    }
-}
-
-/* Navbar toggle - animación X */
-.navbar__toggle.active span:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
-}
-
-.navbar__toggle.active span:nth-child(2) {
-    opacity: 0;
-}
-
-.navbar__toggle.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(5px, -5px);
-}
-
-/* Contador numérico */
-@keyframes countUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Hero scroll indicator bounce */
-@keyframes bounceDown {
-    0%, 20%, 50%, 80%, 100% {
-        transform: translateX(-50%) translateY(0);
-    }
-    40% {
-        transform: translateX(-50%) translateY(8px);
-    }
-    60% {
-        transform: translateX(-50%) translateY(4px);
-    }
-}
-
-/* Hero scroll indicator fade out on scroll */
-.hero__scroll-indicator.hidden {
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-/* WhatsApp tooltip badge - aparece y desaparece */
-@keyframes tooltipPulse {
-    0%, 100% {
-        opacity: 0;
-        transform: translateX(10px);
-    }
-    15%, 85% {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-.whatsapp-btn__tooltip {
-    animation: tooltipPulse 4s ease infinite;
+/* SVG coastline stroke draw — triggered by JS */
+.costa-draw__line {
+    stroke-dasharray: 2000;
+    stroke-dashoffset: 2000;
+    /* transition set by JS after measuring real length */
 }
