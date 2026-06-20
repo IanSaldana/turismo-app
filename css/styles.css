@@ -1,26 +1,63 @@
 /* ============================================
-   PERSONALIZAR AQUÍ: cambiar estos valores
-   para adaptar toda la paleta del sitio.
+   DESIGN TOKENS — Turismo Briones Hernández
+   Paleta territorial de Calbuco, Los Lagos
    ============================================ */
 :root {
-    --color-primary: #0077B6;        /* azul océano - botones, enlaces, acentos */
-    --color-primary-dark: #005F8A;   /* hover de botones */
-    --color-secondary: #00B4D8;      /* azul claro - detalles, iconos */
-    --color-accent: #FF6B35;         /* naranja cálido - CTA, elementos que destaquen */
-    --color-dark: #1A1A2E;           /* textos oscuros, fondo navbar */
-    --color-light: #F8F9FA;          /* fondo secciones alternas */
-    --color-white: #FFFFFF;
-    --color-gray: #6C757D;           /* textos secundarios */
-    --color-gray-light: #E9ECEF;     /* bordes, separadores */
+    /* Color — Territorio */
+    --color-canal: #3D5A5B;          /* principal — agua del canal entre islas */
+    --color-madera: #8B6F4E;         /* acento cálido — madera de palafitos */
+    --color-bosque: #2E4A3A;         /* fondos oscuros — bosque valdiviano */
+    --color-niebla: #E8E5E0;         /* fondo base — cielo cubierto austral */
+    --color-espuma: #F5F3F0;         /* cards, secciones alternas */
+    --color-oxido: #C4572A;          /* CTA único — óxido de botes artesanales */
+    --color-oxido-dark: #A84922;     /* hover CTA */
+    --color-text: #1E2B2B;           /* texto body (tinted dark) */
+    --color-text-soft: #5C6B6B;      /* texto secundario */
 
-    --font-heading: 'Poppins', sans-serif;
-    --font-body: 'Inter', sans-serif;
+    /* Legacy aliases (backward compat while refactoring) */
+    --color-primary: var(--color-canal);
+    --color-primary-dark: #2E4647;
+    --color-secondary: var(--color-madera);
+    --color-accent: var(--color-oxido);
+    --color-dark: var(--color-bosque);
+    --color-light: var(--color-niebla);
+    --color-white: var(--color-espuma);
+    --color-gray: var(--color-text-soft);
+    --color-gray-light: #D4D1CC;
 
-    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
-    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
-    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.16);
+    /* Typography */
+    --font-display: 'DM Serif Display', serif;
+    --font-body: 'Outfit', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --font-heading: var(--font-display);
 
-    --radius: 8px;
+    /* Shadows — tintadas con bosque */
+    --shadow-sm: 0 2px 8px rgba(45, 74, 58, 0.06);
+    --shadow-md: 0 8px 24px rgba(45, 74, 58, 0.10);
+    --shadow-lg: 0 16px 48px rgba(45, 74, 58, 0.14);
+
+    /* Radius */
+    --radius-sm: 3px;
+    --radius: 6px;
+    --radius-lg: 8px;
+
+    /* Spacing */
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;
+    --space-md: 1.5rem;
+    --space-lg: 2.5rem;
+    --space-xl: 4rem;
+    --space-2xl: 6rem;
+
+    /* Container */
+    --container-max: 1200px;
+    --container-padding: clamp(1.5rem, 4vw, 3rem);
+
+    /* Section (asymmetric — more space below) */
+    --section-padding-top: clamp(4rem, 8vw, 7rem);
+    --section-padding-bottom: clamp(5rem, 10vw, 9rem);
+
+    /* Transition */
     --transition: all 0.3s ease;
 }
 

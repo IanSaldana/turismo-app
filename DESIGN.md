@@ -1,208 +1,280 @@
 # Design
 
+> Sistema visual para Turismo Briones Hernández — empresa familiar multi-servicio (turismo, transporte escolar, empresas, taxi) en Calbuco, Los Lagos.
+> Paleta territorial, tipografía con carácter, layout editorial-modular.
+> TODO: Secciones de servicios serán expandidas cuando llegue la info completa del cliente.
+
+---
+
+## Design Direction
+
+**Design Read:** Landing de empresa familiar multi-servicio para audiencia local + turistas, con un lenguaje editorial-territorial, leaning toward vanilla CSS + Google Fonts + animación SVG mínima.
+
+**Dials:**
+- `DESIGN_VARIANCE: 8` — Asimétrico, no plantilla
+- `MOTION_INTENSITY: 4` — Un momento orquestado, el resto estático
+- `VISUAL_DENSITY: 3` — Respira, no es catálogo
+
+**Narrativa:** "Tu familia local que conoce cada camino" — no corporativo, no template de agencia.
+
+---
+
 ## Color
 
 ### Palette
 
-| Token | Value | Usage |
-|-------|-------|-------|
-| `--color-primary` | `#0077B6` | Navbar, botones primarios, enlaces, iconos principales |
-| `--color-primary-dark` | `#005F8A` | Hover de botones primarios |
-| `--color-secondary` | `#00B4D8` | Acentos secundarios, degradados |
-| `--color-accent` | `#FF6B35` | CTAs, badges, highlights, botón WhatsApp |
-| `--color-dark` | `#1A1A2E` | Texto principal, navbar fondo, footer fondo |
-| `--color-light` | `#F8F9FA` | Fondo de secciones alternas |
-| `--color-white` | `#FFFFFF` | Fondos base, texto sobre fondos oscuros |
-| `--color-gray` | `#6C757D` | Texto secundario, descripciones |
-| `--color-gray-light` | `#E9ECEF` | Bordes, separadores, fondos de input |
+Extraída del territorio real de Calbuco: agua del canal, madera de muelles, bosque valdiviano, niebla costera, óxido de caleta.
 
-### Usage Notes
+| Token | Name | Value | Usage |
+|-------|------|-------|-------|
+| `--color-canal` | Canal | `#3D5A5B` | Color principal — textos destacados, bordes activos, iconos |
+| `--color-madera` | Madera de muelle | `#8B6F4E` | Acento cálido — detalles, hovers, elementos secundarios |
+| `--color-bosque` | Bosque siempreverde | `#2E4A3A` | Fondos oscuros — navbar, footer, hero overlay |
+| `--color-niebla` | Niebla costera | `#E8E5E0` | Fondo base de página |
+| `--color-espuma` | Espuma | `#F5F3F0` | Fondo de cards, secciones alternas |
+| `--color-oxido` | Óxido de caleta | `#C4572A` | CTA único — botones de acción, WhatsApp hover |
+| `--color-text` | Tinta | `#1E2B2B` | Texto body principal (tinted dark, no pure black) |
+| `--color-text-soft` | Tinta suave | `#5C6B6B` | Texto secundario, descripciones |
 
-- El azul `#0077B6` evoca el agua del lago y el mar de Calbuco. Es el color de confianza.
-- El naranja `#FF6B35` es el color de acción. Solo debe aparecer en CTAs y elementos interactivos que piden atención.
-- No mezclar warm grays con cool grays. La paleta es cool (grays con base azulada).
-- El fondo del hero usa degradado oscuro sobre la foto para legibilidad: `linear-gradient(135deg, rgba(0,119,182,0.8), rgba(0,180,216,0.6))`.
+### Usage Rules
+
+- **Un solo color de acción:** `--color-oxido` es el ÚNICO color que dice "haz clic aquí". No hay segundo acento.
+- **Sin mezcla warm/cool:** La paleta es uniformemente cool-tinted. Los grays heredan el tono verde-azulado del canal.
+- **Overlays sobre fotos:** `linear-gradient(to top, var(--color-bosque) 0%, transparent 60%)` — gradiente desde abajo para texto legible sin cubrir la imagen.
+- **Sombras tintadas:** Las sombras usan `rgba(45, 74, 58, 0.12)` (bosque con opacidad), no negro puro.
+
+---
 
 ## Typography
 
+### Fonts
+
+| Token | Font | Weight(s) | Source | Role |
+|-------|------|-----------|--------|------|
+| `--font-display` | `DM Serif Display` | 400 | Google Fonts | Titulares H1, H2, citas grandes |
+| `--font-body` | `Outfit` | 300, 400, 500, 600 | Google Fonts | Body, UI, navegación, botones |
+| `--font-mono` | `JetBrains Mono` | 400 | Google Fonts | Datos: precios, coordenadas, distancias, horarios |
+
 ### Type Scale
 
-| Token | Value | Usage |
-|-------|-------|-------|
-| `--font-heading` | `'Poppins', sans-serif` | H1, H2, H3, nombres de destinos, slogan |
-| `--font-body` | `'Inter', sans-serif` | Párrafos, labels, botones, navegación |
+| Element | Size | Weight | Font | Extra |
+|---------|------|--------|------|-------|
+| H1 (hero) | `clamp(2.5rem, 6vw, 4rem)` | 400 | Display | `letter-spacing: -0.02em; line-height: 1.1` |
+| H2 (sección) | `clamp(1.8rem, 4vw, 2.8rem)` | 400 | Display | `line-height: 1.2` |
+| H3 (card/servicio) | `1.25rem` | 400 | Display | `line-height: 1.3` |
+| Body | `1rem` | 400 | Body | `line-height: 1.75; max-width: 65ch` |
+| Body small | `0.875rem` | 400 | Body | `line-height: 1.6` |
+| Label/utility | `0.75rem` | 500 | Body | `letter-spacing: 0.05em; text-transform: uppercase` |
+| Data | `0.85rem` | 400 | Mono | `letter-spacing: 0.02em` |
 
-Cargadas vía Google Fonts CDN (pesos: Poppins 300/400/600/700/800, Inter 300/400/500/600).
+### Typography Rules
 
-### Scale in Use
+- Headlines DM Serif Display a peso 400 ya tienen presencia — NO usar bold.
+- Body paragraphs limitados a `max-width: 65ch` siempre.
+- `text-wrap: balance` en H1, H2 para evitar orphans.
+- Números y datos (precios, distancias, horarios) siempre en `--font-mono`.
 
-- Display (hero H1): `4.5rem` / `font-weight: 800` / `line-height: 1.1`
-- H2 (sección): `2.5rem` / `font-weight: 700`
-- H3 (card/item): `1.25–1.5rem` / `font-weight: 600`
-- Body: `1rem` / `font-weight: 400` / `line-height: 1.7`
-- Small / label: `0.85–0.9rem`
-
-### Decorative Underline
-
-Los H2 de sección tienen un `::after` centrado:
-```css
-width: 60px; height: 4px; background: var(--color-accent); border-radius: 2px;
-```
+---
 
 ## Spacing & Layout
 
 ### Container
 
 ```css
-max-width: 1200px; margin: 0 auto; padding: 0 2rem;
+--container-max: 1200px;
+--container-padding: clamp(1.5rem, 4vw, 3rem);
 ```
 
-### Section Padding
+### Section Spacing
 
 ```css
-padding: 5rem 0;  /* Secciones estándar */
+--section-padding-top: clamp(4rem, 8vw, 7rem);
+--section-padding-bottom: clamp(5rem, 10vw, 9rem);
+/* Asimétrico: más espacio abajo que arriba (optically balanced) */
 ```
 
-Secciones alternas usan `background: var(--color-light)` para crear ritmo visual sin bordes.
+### Spacing Scale
 
-### Grid System
+```css
+--space-xs: 0.5rem;
+--space-sm: 1rem;
+--space-md: 1.5rem;
+--space-lg: 2.5rem;
+--space-xl: 4rem;
+--space-2xl: 6rem;
+```
 
-CSS Grid nativo (no Bootstrap). Principales estructuras:
-- Destinos: `grid-template-columns: repeat(2, 1fr)` → `1fr` en mobile
-- Experiencias: `repeat(3, 1fr)` → `1fr` en mobile
-- Galería: grid mosaico con `grid-template-columns: repeat(4, 1fr)` y `grid-row: span 2` / `grid-column: span 2` para variedad
-- Estadísticas: `repeat(4, 1fr)` → `repeat(2, 1fr)` en mobile
+### Grid — Modular por servicio
+
+```css
+/* Servicios principales: asimétrico 2-col */
+grid-template-columns: 1.2fr 0.8fr;
+
+/* Destinos/cards: masonry-like escalonado */
+grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+
+/* Galería: irregular */
+grid-template-columns: repeat(3, 1fr);
+```
 
 ### Breakpoints
 
-| Breakpoint | Value |
-|-----------|-------|
-| Mobile | `max-width: 768px` |
-| Tablet | `max-width: 1024px` |
+| Name | Value | Notes |
+|------|-------|-------|
+| Mobile | `max-width: 768px` | Stack todo vertical |
+| Tablet | `max-width: 1024px` | 2 cols donde aplique |
+
+---
 
 ## Components
 
 ### Buttons
 
 ```css
-/* Primary */
-background: var(--color-accent);
+/* Primary (único CTA) */
+background: var(--color-oxido);
 color: white;
-padding: 1rem 2rem;
-border-radius: var(--radius);
-font-weight: 600;
-transition: var(--transition);
+padding: 0.875rem 2rem;
+border-radius: 4px;
+font-family: var(--font-body);
+font-weight: 500;
+font-size: 0.9rem;
+letter-spacing: 0.02em;
 
-/* Secondary */
+/* Hover: --color-oxido-dark + translateY(-1px) */
+/* Active: translateY(0) */
+
+/* Secondary (solo bordes) */
 background: transparent;
-border: 2px solid white;
-color: white;
+border: 1.5px solid var(--color-canal);
+color: var(--color-canal);
 ```
 
-Hover: `transform: translateY(-2px)` + `box-shadow: var(--shadow-md)`
+### Cards (Servicios / Destinos)
 
-### Cards (Destinos)
+```css
+background: var(--color-espuma);
+border-radius: 6px;
+padding: var(--space-lg);
+border: 1px solid rgba(61, 90, 91, 0.08);
+/* Sin box-shadow por defecto — solo en hover */
 
-- `border-radius: var(--radius)` (8px)
-- `box-shadow: var(--shadow-sm)`
-- Hover: `transform: translateY(-8px)` + `shadow-lg`
-- Badge de precio en `background: var(--color-accent)`
+/* Hover: shadow-md + translateY(-3px) */
+```
+
+### Data Badge (precios, distancias, horarios)
+
+```css
+font-family: var(--font-mono);
+font-size: 0.8rem;
+background: var(--color-niebla);
+padding: 0.3rem 0.6rem;
+border-radius: 3px;
+color: var(--color-canal);
+```
 
 ### Navbar
 
-- Fixed top, `z-index: 1000`
-- Fondo transparente → `var(--color-dark)` con `box-shadow` al hacer scroll (>50px)
-- Logo y links en blanco
-- Active link: `color: var(--color-accent)`
-
-### Cards (Experiencias)
-
-- Ícono circular: `width/height: 80px`, `background: rgba(0,119,182,0.1)`, `border-radius: 50%`
-- Hover: ícono con `transform: rotateY(360deg)` (1s)
-
-### Galería Lightbox
-
-- Overlay: `rgba(0,0,0,0.9)`
-- Ítem de galería con `background-size: cover`, hover con overlay de color primario al 80%
-
-### Testimonios Slider
-
-- Cards con `border-left: 4px solid var(--color-accent)`
-- Auto-play: 5 segundos
-- Dots de navegación: círculo pequeño, activo en `var(--color-primary)`
-
-### Formulario de Contacto
-
-- Inputs: `border: 2px solid var(--color-gray-light)`, focus en `var(--color-primary)`
-- Error state: `border-color: #e74c3c`
-- Submit: botón primary (naranja)
+- Fixed top, `background: var(--color-bosque)` (siempre sólido)
+- Links: `color: var(--color-espuma); opacity: 0.85`
+- Active: `color: var(--color-oxido)`
+- z-index: 100
 
 ### WhatsApp Button
 
-- Floating bottom-right: `position: fixed; bottom: 2rem; right: 2rem; z-index: 999`
-- Color: `#25D366`
-- Animación: `pulse` infinita (CSS keyframe)
+- Fixed bottom-right, `background: #25D366`, border-radius: 50%
+- Sin animación pulse — solo `transform: scale(1.08)` en hover
+- z-index: 99
 
-## Shadows
+### Testimonial (editorial)
 
 ```css
---shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
---shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
---shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.16);
+font-family: var(--font-display);
+font-size: clamp(1.3rem, 3vw, 1.8rem);
+line-height: 1.5;
+color: var(--color-canal);
+border-left: 3px solid var(--color-madera);
+padding-left: var(--space-lg);
+max-width: 50ch;
 ```
+
+---
+
+## Firma Visual — Silueta Costera SVG
+
+SVG simplificado de la línea costera del archipiélago de Calbuco como divisor entre secciones.
+
+### Rules
+
+- `aria-hidden="true"` — decorativo
+- 1 path simplificado (~20 puntos)
+- Máximo 2-3 usos en la página
+- Animación `stroke-dashoffset` al cargar (ÚNICO momento de animación compleja)
+- Color: `var(--color-niebla)` con opacity 0.6
+
+---
 
 ## Motion
 
-### Library
+### Philosophy
 
-AOS (Animate On Scroll) vía CDN. Configuración:
+Un solo momento orquestado. El resto es estático o con transiciones funcionales.
 
-```js
-AOS.init({ duration: 800, easing: 'ease-in-out', once: true, offset: 100 });
-```
-
-### Custom Animations (css/animations.css)
-
-| Keyframe | Uso |
-|----------|-----|
-| `fadeInUp` | Entrada en cascada de hero (título, subtítulo, botones) |
-| `pulse` | Botón WhatsApp (infinita) |
-| `bounceDown` | Indicador de scroll en hero |
-| `countUp` | Entrada visual de contadores de stats |
-
-### Transitions
+### Animation (hero load)
 
 ```css
---transition: all 0.3s ease;
+.costa-draw {
+  stroke-dasharray: var(--path-length);
+  stroke-dashoffset: var(--path-length);
+  animation: draw 2s ease-out 0.5s forwards;
+}
+@keyframes draw { to { stroke-dashoffset: 0; } }
 ```
 
-**Nota para mejora**: `transition: all` debe reemplazarse por propiedades específicas (`transform`, `opacity`, `box-shadow`) para mejor performance.
-
-### Contadores Animados
-
-`IntersectionObserver` + `requestAnimationFrame`. Cuenta de 0 al valor objetivo en 2 segundos.
-
-## Border Radius
+### Transitions (functional only)
 
 ```css
---radius: 8px;  /* Cards, botones, inputs */
+a, button { transition: color 0.2s ease, background-color 0.2s ease, transform 0.2s ease; }
+.card { transition: box-shadow 0.3s ease, transform 0.3s ease; }
 ```
 
-Círculos: `border-radius: 50%` (iconos de experiencias, avatar testimonios)
-Pills: `border-radius: 50px` (badges de precio)
+### Removed
+
+- ~~AOS library~~ — Eliminada
+- ~~Parallax~~
+- ~~Hover rotate 360deg~~
+- ~~Pulse infinito~~
+
+### Reduced Motion
+
+```css
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+```
+
+---
+
+## Section Architecture
+
+1. **Hero** — Frase ancla + foto territorial + CTA WhatsApp
+2. **Presentación** — Quiénes somos (empresa familiar, Calbuco)
+3. **Servicios** — Grid modular: Turismo / Transporte Escolar / Empresas / Taxi
+4. **Destinos** (turismo) — Masonry escalonado con coordenadas
+5. **Testimonio** — Uno editorial grande, rotativo (8s)
+6. **Galería** — Mosaico irregular
+7. **Contacto** — Formulario + mapa + datos integrados
+8. **Footer** — Mínimo
+
+---
 
 ## Icons
 
-Font Awesome 6 vía CDN. Uso principalmente en:
-- Sección Experiencias (íconos de cada servicio)
-- Sección Nosotros (checklist)
-- Contacto (teléfono, email, ubicación, horario)
-- Redes sociales (footer y contacto)
-
-## Section Backgrounds
-
-Alternancia para ritmo visual:
-- Secciones pares: `background: white`
-- Secciones impares: `background: var(--color-light)` (#F8F9FA)
-- Hero: imagen fotográfica + overlay degradado azul
-- Navbar / Footer: `var(--color-dark)` (#1A1A2E)
+Font Awesome 6 via CDN:
+- Turismo: `fa-solid fa-compass`
+- Transporte escolar: `fa-solid fa-van-shuttle`
+- Empresas: `fa-solid fa-building`
+- Taxi: `fa-solid fa-taxi`
