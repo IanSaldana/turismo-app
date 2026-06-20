@@ -1,5 +1,5 @@
 /* ============================================
-   DESIGN TOKENS — Turismo Briones Hernández
+   DESIGN TOKENS — HyB Transporte y Turismo
    Paleta territorial de Calbuco, Los Lagos
    ============================================ */
 :root {
@@ -7,12 +7,14 @@
     --color-canal: #3D5A5B;
     --color-madera: #8B6F4E;
     --color-bosque: #2E4A3A;
+    --color-bosque-deep: #1E3329;
     --color-niebla: #E8E5E0;
     --color-espuma: #F5F3F0;
     --color-oxido: #C4572A;
     --color-oxido-dark: #A84922;
     --color-text: #1E2B2B;
     --color-text-soft: #5C6B6B;
+    --color-canal-light: rgba(61, 90, 91, 0.06);
 
     /* Typography */
     --font-display: 'DM Serif Display', serif;
@@ -23,6 +25,7 @@
     --shadow-sm: 0 2px 8px rgba(45, 74, 58, 0.06);
     --shadow-md: 0 8px 24px rgba(45, 74, 58, 0.10);
     --shadow-lg: 0 16px 48px rgba(45, 74, 58, 0.14);
+    --shadow-elevated: 0 20px 60px rgba(30, 51, 41, 0.18);
 
     /* Radius */
     --radius-sm: 3px;
@@ -44,6 +47,16 @@
     /* Section (asymmetric) */
     --section-padding-top: clamp(4rem, 8vw, 7rem);
     --section-padding-bottom: clamp(5rem, 10vw, 9rem);
+
+    /* Navigation */
+    --nav-height: 72px;
+    --nav-height-compact: 56px;
+
+    /* Motion */
+    --duration-hero: 2s;
+    --duration-section: 0.8s;
+    --duration-hover: 0.2s;
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* ============================================
@@ -989,141 +1002,3 @@ input, select, textarea {
     border-radius: var(--radius);
 }
 
-/* ============================================
-   RESPONSIVE — TABLET (max-width: 1024px)
-   ============================================ */
-@media (max-width: 1024px) {
-    .servicios__grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .destino-card--destacado {
-        grid-column: span 1;
-    }
-
-    .presentacion__container {
-        gap: var(--space-lg);
-    }
-
-    .footer__container {
-        flex-wrap: wrap;
-    }
-}
-
-/* ============================================
-   RESPONSIVE — MOBILE (max-width: 768px)
-   ============================================ */
-@media (max-width: 768px) {
-
-    /* Navbar mobile */
-    .navbar__toggle {
-        display: flex;
-    }
-
-    .navbar__menu {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 280px;
-        height: 100vh;
-        background: var(--color-bosque);
-        padding: 5rem var(--space-lg) var(--space-lg);
-        transition: right 0.3s ease;
-        z-index: 99;
-    }
-
-    .navbar__menu.active {
-        right: 0;
-    }
-
-    .navbar__list {
-        flex-direction: column;
-        gap: var(--space-md);
-    }
-
-    .navbar__link {
-        font-size: 1rem;
-    }
-
-    /* Hero */
-    .hero {
-        min-height: 85dvh;
-    }
-
-    .hero__title {
-        max-width: 100%;
-    }
-
-    /* Presentación */
-    .presentacion__container {
-        grid-template-columns: 1fr;
-        gap: var(--space-lg);
-    }
-
-    .presentacion__image {
-        order: -1;
-    }
-
-    /* Servicios */
-    .servicios__grid {
-        grid-template-columns: 1fr;
-    }
-
-    /* Destinos */
-    .destinos__grid {
-        grid-template-columns: 1fr;
-    }
-
-    /* Galería */
-    .galeria__grid {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .galeria__item--wide {
-        grid-column: span 2;
-    }
-
-    .galeria__item--tall {
-        grid-row: span 1;
-        aspect-ratio: 4/3;
-    }
-
-    /* Contacto */
-    .contacto__grid {
-        grid-template-columns: 1fr;
-    }
-
-    .contacto__info {
-        order: -1;
-    }
-
-    /* Footer */
-    .footer__container {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: var(--space-md);
-    }
-
-    .footer__links {
-        flex-wrap: wrap;
-        gap: var(--space-sm);
-    }
-
-    .footer__bottom .container {
-        flex-direction: column;
-        gap: 0.5rem;
-        text-align: center;
-    }
-}
-
-/* ============================================
-   REDUCED MOTION
-   ============================================ */
-@media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-    }
-}

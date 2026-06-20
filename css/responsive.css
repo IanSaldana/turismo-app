@@ -1,0 +1,17 @@
+/* ============================================
+   RESPONSIVE — HyB Landing
+   Breakpoints: 480px, 768px, 1024px, 1440px
+   + prefers-reduced-motion
+   ============================================ */
+
+/* Placeholder: responsive rules will be implemented in Phase 4.
+   This file is linked in index.html after styles.css and animations.css. */
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
