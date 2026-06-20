@@ -122,6 +122,34 @@ input, select, textarea {
     border: 0;
 }
 
+.skip-link {
+    position: absolute;
+    top: -100%;
+    left: var(--container-padding);
+    z-index: 999;
+    background: var(--color-oxido);
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.skip-link:focus {
+    top: var(--space-sm);
+}
+
+:focus-visible {
+    outline: 2px solid var(--color-oxido);
+    outline-offset: 2px;
+}
+
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: none;
+}
+
 /* ============================================
    LAYOUT
    ============================================ */

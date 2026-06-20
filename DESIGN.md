@@ -1,21 +1,20 @@
 # Design
 
-> Sistema visual para Turismo Briones Hernández — empresa familiar multi-servicio (turismo, transporte escolar, empresas, taxi) en Calbuco, Los Lagos.
-> Paleta territorial, tipografía con carácter, layout editorial-modular.
-> TODO: Secciones de servicios serán expandidas cuando llegue la info completa del cliente.
+> Sistema visual para HyB — Transporte Escolar, Empresas y Turismo. Empresa familiar en Calbuco, Los Lagos.
+> Paleta territorial, tipografía con carácter, experiencia narrativa de 3 actos con GSAP.
 
 ---
 
 ## Design Direction
 
-**Design Read:** Landing de empresa familiar multi-servicio para audiencia local + turistas, con un lenguaje editorial-territorial, leaning toward vanilla CSS + Google Fonts + animación SVG mínima.
+**Design Read:** Landing inmersiva de empresa familiar multi-servicio. Narrativa de viaje: embarcar → recorrer → llegar. GSAP-driven motion con firma visual SVG.
 
 **Dials:**
-- `DESIGN_VARIANCE: 8` — Asimétrico, no plantilla
-- `MOTION_INTENSITY: 4` — Un momento orquestado, el resto estático
-- `VISUAL_DENSITY: 3` — Respira, no es catálogo
+- `DESIGN_VARIANCE: 9` — Narrativa de 3 actos, servicios pinned, SVG route line
+- `MOTION_INTENSITY: 7` — GSAP timelines orquestadas, ScrollTrigger scrub, parallax
+- `VISUAL_DENSITY: 3` — Respira, tipografía y composición sobre fotografía
 
-**Narrativa:** "Tu familia local que conoce cada camino" — no corporativo, no template de agencia.
+**Narrativa:** "Cada viaje empieza con confianza" — el scroll es un recorrido, cada sección es un tramo.
 
 ---
 
@@ -28,20 +27,20 @@ Extraída del territorio real de Calbuco: agua del canal, madera de muelles, bos
 | Token | Name | Value | Usage |
 |-------|------|-------|-------|
 | `--color-canal` | Canal | `#3D5A5B` | Color principal — textos destacados, bordes activos, iconos |
-| `--color-madera` | Madera de muelle | `#8B6F4E` | Acento cálido — detalles, hovers, elementos secundarios |
-| `--color-bosque` | Bosque siempreverde | `#2E4A3A` | Fondos oscuros — navbar, footer, hero overlay |
-| `--color-niebla` | Niebla costera | `#E8E5E0` | Fondo base de página |
-| `--color-espuma` | Espuma | `#F5F3F0` | Fondo de cards, secciones alternas |
-| `--color-oxido` | Óxido de caleta | `#C4572A` | CTA único — botones de acción, WhatsApp hover |
-| `--color-text` | Tinta | `#1E2B2B` | Texto body principal (tinted dark, no pure black) |
+| `--color-madera` | Madera de muelle | `#8B6F4E` | Acento cálido — SVG route line, detalles, labels |
+| `--color-bosque` | Bosque siempreverde | `#2E4A3A` | Navbar sólido, hero gradient medio |
+| `--color-bosque-deep` | Bosque profundo | `#1E3329` | Hero gradient base, footer, mobile menu |
+| `--color-niebla` | Niebla costera | `#E8E5E0` | Fondo base de página, secciones alternas |
+| `--color-espuma` | Espuma | `#F5F3F0` | Fondo de paneles de servicio, secciones alternas |
+| `--color-oxido` | Óxido de caleta | `#C4572A` | CTA único — botones de acción, números destacados |
+| `--color-text` | Tinta | `#1E2B2B` | Texto body principal |
 | `--color-text-soft` | Tinta suave | `#5C6B6B` | Texto secundario, descripciones |
 
 ### Usage Rules
 
-- **Un solo color de acción:** `--color-oxido` es el ÚNICO color que dice "haz clic aquí". No hay segundo acento.
-- **Sin mezcla warm/cool:** La paleta es uniformemente cool-tinted. Los grays heredan el tono verde-azulado del canal.
-- **Overlays sobre fotos:** `linear-gradient(to top, var(--color-bosque) 0%, transparent 60%)` — gradiente desde abajo para texto legible sin cubrir la imagen.
-- **Sombras tintadas:** Las sombras usan `rgba(45, 74, 58, 0.12)` (bosque con opacidad), no negro puro.
+- **Un solo color de acción:** `--color-oxido` es el ÚNICO color que dice "haz clic aquí".
+- **Hero gradient:** `linear-gradient(145deg, bosque-deep 0%, bosque 45%, canal 100%)`
+- **Sombras tintadas:** `rgba(45, 74, 58, opacity)` — nunca negro puro.
 
 ---
 
@@ -49,168 +48,64 @@ Extraída del territorio real de Calbuco: agua del canal, madera de muelles, bos
 
 ### Fonts
 
-| Token | Font | Weight(s) | Source | Role |
-|-------|------|-----------|--------|------|
-| `--font-display` | `DM Serif Display` | 400 | Google Fonts | Titulares H1, H2, citas grandes |
-| `--font-body` | `Outfit` | 300, 400, 500, 600 | Google Fonts | Body, UI, navegación, botones |
-| `--font-mono` | `JetBrains Mono` | 400 | Google Fonts | Datos: precios, coordenadas, distancias, horarios |
+| Token | Font | Weight(s) | Role |
+|-------|------|-----------|------|
+| `--font-display` | `DM Serif Display` | 400 | H1, H2, testimonios |
+| `--font-body` | `Outfit` | 300, 400, 500, 600 | Body, UI, navegación, botones |
+| `--font-mono` | `JetBrains Mono` | 400 | Labels, números, progress counter |
 
 ### Type Scale
 
-| Element | Size | Weight | Font | Extra |
-|---------|------|--------|------|-------|
-| H1 (hero) | `clamp(2.5rem, 6vw, 4rem)` | 400 | Display | `letter-spacing: -0.02em; line-height: 1.1` |
-| H2 (sección) | `clamp(1.8rem, 4vw, 2.8rem)` | 400 | Display | `line-height: 1.2` |
-| H3 (card/servicio) | `1.25rem` | 400 | Display | `line-height: 1.3` |
-| Body | `1rem` | 400 | Body | `line-height: 1.75; max-width: 65ch` |
-| Body small | `0.875rem` | 400 | Body | `line-height: 1.6` |
-| Label/utility | `0.75rem` | 500 | Body | `letter-spacing: 0.05em; text-transform: uppercase` |
-| Data | `0.85rem` | 400 | Mono | `letter-spacing: 0.02em` |
-
-### Typography Rules
-
-- Headlines DM Serif Display a peso 400 ya tienen presencia — NO usar bold.
-- Body paragraphs limitados a `max-width: 65ch` siempre.
-- `text-wrap: balance` en H1, H2 para evitar orphans.
-- Números y datos (precios, distancias, horarios) siempre en `--font-mono`.
+| Element | Size | Font | Extra |
+|---------|------|------|-------|
+| H1 (hero) | `clamp(2.5rem, 6vw, 4.5rem)` | Display | `letter-spacing: -0.02em; line-height: 1.08` |
+| H2 (sección) | `clamp(1.8rem, 4vw, 2.8rem)` | Display | `line-height: 1.2` |
+| Body | `1rem` | Body | `line-height: 1.75; max-width: 65ch` |
+| Label | `0.7-0.75rem` | Mono | `letter-spacing: 0.08em; text-transform: uppercase` |
 
 ---
 
 ## Spacing & Layout
 
 ### Container
-
 ```css
---container-max: 1200px;
+--container-max: 1200px; /* 1360px en 1440px+ */
 --container-padding: clamp(1.5rem, 4vw, 3rem);
-```
-
-### Section Spacing
-
-```css
---section-padding-top: clamp(4rem, 8vw, 7rem);
---section-padding-bottom: clamp(5rem, 10vw, 9rem);
-/* Asimétrico: más espacio abajo que arriba (optically balanced) */
-```
-
-### Spacing Scale
-
-```css
---space-xs: 0.5rem;
---space-sm: 1rem;
---space-md: 1.5rem;
---space-lg: 2.5rem;
---space-xl: 4rem;
---space-2xl: 6rem;
-```
-
-### Grid — Modular por servicio
-
-```css
-/* Servicios principales: asimétrico 2-col */
-grid-template-columns: 1.2fr 0.8fr;
-
-/* Destinos/cards: masonry-like escalonado */
-grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-
-/* Galería: irregular */
-grid-template-columns: repeat(3, 1fr);
 ```
 
 ### Breakpoints
 
-| Name | Value | Notes |
-|------|-------|-------|
-| Mobile | `max-width: 768px` | Stack todo vertical |
-| Tablet | `max-width: 1024px` | 2 cols donde aplique |
+| Name | Value |
+|------|-------|
+| Small mobile | `max-width: 480px` |
+| Mobile | `max-width: 768px` |
+| Tablet | `max-width: 1024px` |
+| Large desktop | `min-width: 1440px` |
 
 ---
 
-## Components
+## Section Architecture (3 Actos)
 
-### Buttons
-
-```css
-/* Primary (único CTA) */
-background: var(--color-oxido);
-color: white;
-padding: 0.875rem 2rem;
-border-radius: 4px;
-font-family: var(--font-body);
-font-weight: 500;
-font-size: 0.9rem;
-letter-spacing: 0.02em;
-
-/* Hover: --color-oxido-dark + translateY(-1px) */
-/* Active: translateY(0) */
-
-/* Secondary (solo bordes) */
-background: transparent;
-border: 1.5px solid var(--color-canal);
-color: var(--color-canal);
-```
-
-### Cards (Servicios / Destinos)
-
-```css
-background: var(--color-espuma);
-border-radius: 6px;
-padding: var(--space-lg);
-border: 1px solid rgba(61, 90, 91, 0.08);
-/* Sin box-shadow por defecto — solo en hover */
-
-/* Hover: shadow-md + translateY(-3px) */
-```
-
-### Data Badge (precios, distancias, horarios)
-
-```css
-font-family: var(--font-mono);
-font-size: 0.8rem;
-background: var(--color-niebla);
-padding: 0.3rem 0.6rem;
-border-radius: 3px;
-color: var(--color-canal);
-```
-
-### Navbar
-
-- Fixed top, `background: var(--color-bosque)` (siempre sólido)
-- Links: `color: var(--color-espuma); opacity: 0.85`
-- Active: `color: var(--color-oxido)`
-- z-index: 100
-
-### WhatsApp Button
-
-- Fixed bottom-right, `background: #25D366`, border-radius: 50%
-- Sin animación pulse — solo `transform: scale(1.08)` en hover
-- z-index: 99
-
-### Testimonial (editorial)
-
-```css
-font-family: var(--font-display);
-font-size: clamp(1.3rem, 3vw, 1.8rem);
-line-height: 1.5;
-color: var(--color-canal);
-border-left: 3px solid var(--color-madera);
-padding-left: var(--space-lg);
-max-width: 50ch;
-```
+1. **Hero (Acto 1: Embarcar)** — 100dvh, gradient cinematográfico, timeline GSAP orquestada
+2. **Servicios (Acto 2: El Recorrido)** — ScrollTrigger pinned, 3 paneles con crossfade (300vh wrapper)
+3. **Diferenciadores (Acto 3: El Destino)** — Números grandes + texto, grid asimétrico
+4. **Testimonios** — Blockquotes editoriales, reveal individual
+5. **Contacto** — Formulario Netlify + info + mapa, entrada secuencial
+6. **Footer** — bosque-deep, cierre de experiencia
 
 ---
 
-## Firma Visual — Silueta Costera SVG
+## Firma Visual — SVG Route Line
 
-SVG simplificado de la línea costera del archipiélago de Calbuco como divisor entre secciones.
+Path SVG serpentino que recorre toda la altura de la página, dibujándose con `stroke-dashoffset` via ScrollTrigger scrub.
 
 ### Rules
-
-- `aria-hidden="true"` — decorativo
-- 1 path simplificado (~20 puntos)
-- Máximo 2-3 usos en la página
-- Animación `stroke-dashoffset` al cargar (ÚNICO momento de animación compleja)
-- Color: `var(--color-niebla)` con opacity 0.6
+- `pointer-events: none`, `z-index: 1`
+- Stroke: `--color-madera`, opacity 0.2, width 1.5
+- 5 station dots en puntos de transición entre secciones
+- Path generado dinámicamente en JS basado en `offsetTop` de secciones
+- Oculto en mobile (`display: none` bajo 768px)
+- Oculto con `prefers-reduced-motion`
 
 ---
 
@@ -218,63 +113,24 @@ SVG simplificado de la línea costera del archipiélago de Calbuco como divisor 
 
 ### Philosophy
 
-Un solo momento orquestado. El resto es estático o con transiciones funcionales.
+GSAP controla toda la motion. CSS solo maneja hover states simples. Cada animación tiene propósito: guiar atención, revelar información en orden, crear continuidad.
 
-### Animation (hero load)
+### Easing
+- Entradas: `power3.out`
+- Transiciones: `power2.inOut`
+- Hover: `power2.out`
+- Bounce sutil: `back.out(1.5)`
+- Magnetic snap-back: `elastic.out(1, 0.4)`
 
-```css
-.costa-draw {
-  stroke-dasharray: var(--path-length);
-  stroke-dashoffset: var(--path-length);
-  animation: draw 2s ease-out 0.5s forwards;
-}
-@keyframes draw { to { stroke-dashoffset: 0; } }
-```
-
-### Transitions (functional only)
-
-```css
-a, button { transition: color 0.2s ease, background-color 0.2s ease, transform 0.2s ease; }
-.card { transition: box-shadow 0.3s ease, transform 0.3s ease; }
-```
-
-### Removed
-
-- ~~AOS library~~ — Eliminada
-- ~~Parallax~~
-- ~~Hover rotate 360deg~~
-- ~~Pulse infinito~~
+### Key Animations
+- **Hero timeline:** label → título → subtítulo → CTAs → scroll indicator (~2s)
+- **Servicios pin:** crossfade entre paneles con scrub
+- **SVG route:** stroke-dashoffset scrub 0→0
+- **Diferenciadores:** stagger 0.15s
+- **WhatsApp:** delayed entry 2.5s + subtle pulse
+- **Mobile menu:** timeline pausada, play/reverse
 
 ### Reduced Motion
-
-```css
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    transition-duration: 0.01ms !important;
-  }
-}
-```
-
----
-
-## Section Architecture
-
-1. **Hero** — Frase ancla + foto territorial + CTA WhatsApp
-2. **Presentación** — Quiénes somos (empresa familiar, Calbuco)
-3. **Servicios** — Grid modular: Turismo / Transporte Escolar / Empresas / Taxi
-4. **Destinos** (turismo) — Masonry escalonado con coordenadas
-5. **Testimonio** — Uno editorial grande, rotativo (8s)
-6. **Galería** — Mosaico irregular
-7. **Contacto** — Formulario + mapa + datos integrados
-8. **Footer** — Mínimo
-
----
-
-## Icons
-
-Font Awesome 6 via CDN:
-- Turismo: `fa-solid fa-compass`
-- Transporte escolar: `fa-solid fa-van-shuttle`
-- Empresas: `fa-solid fa-building`
-- Taxi: `fa-solid fa-taxi`
+- JS: `gsap.set()` todo visible, return early
+- CSS: `animation-duration: 0.01ms !important`
+- SVG route line: hidden
