@@ -12,3 +12,8 @@ Thumbs.db
 
 # Node (por si se agrega tooling después)
 node_modules/
+
+# AI tooling (skills config)
+.claude/
+.impeccable/
+skills-lock.json
