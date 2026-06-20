@@ -4,14 +4,219 @@
    + prefers-reduced-motion
    ============================================ */
 
-/* Placeholder: responsive rules will be implemented in Phase 4.
-   This file is linked in index.html after styles.css and animations.css. */
+/* ============================================
+   LARGE DESKTOP (1440px+)
+   ============================================ */
+@media (min-width: 1440px) {
+    :root {
+        --container-max: 1360px;
+    }
+}
 
+/* ============================================
+   TABLET (max-width: 1024px)
+   ============================================ */
+@media (max-width: 1024px) {
+    .servicios__pin-wrapper {
+        height: 250vh;
+    }
+
+    .servicios__panel-content {
+        grid-template-columns: 1fr 0.8fr;
+        gap: var(--space-lg);
+    }
+
+    .diferenciadores__grid {
+        gap: var(--space-lg) var(--space-xl);
+    }
+
+    .contacto__grid {
+        gap: var(--space-lg);
+    }
+
+    .footer__container {
+        flex-wrap: wrap;
+        gap: var(--space-md);
+    }
+}
+
+/* ============================================
+   MOBILE (max-width: 768px)
+   ============================================ */
+@media (max-width: 768px) {
+
+    /* Navbar */
+    .navbar__toggle {
+        display: flex;
+    }
+
+    .navbar__nav {
+        display: none;
+    }
+
+    /* Hero */
+    .hero {
+        min-height: 90dvh;
+    }
+
+    .hero__title {
+        max-width: 100%;
+        font-size: clamp(2rem, 8vw, 3rem);
+    }
+
+    .hero__scroll-indicator {
+        display: none;
+    }
+
+    /* Servicios — disable pinning */
+    .servicios__pin-wrapper {
+        height: auto;
+    }
+
+    .servicios__container {
+        position: relative;
+        height: auto;
+        overflow: visible;
+    }
+
+    .servicios__panel {
+        position: relative;
+        inset: auto;
+        opacity: 1 !important;
+        transform: none !important;
+        margin-bottom: var(--space-2xl);
+        min-height: auto;
+        padding: var(--space-xl) 0;
+    }
+
+    .servicios__panel:last-child {
+        margin-bottom: 0;
+    }
+
+    .servicios__panel-content {
+        grid-template-columns: 1fr;
+        gap: var(--space-lg);
+    }
+
+    .servicios__visual {
+        display: none;
+    }
+
+    .servicios__progress {
+        display: none;
+    }
+
+    /* Diferenciadores */
+    .diferenciadores__grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-lg);
+    }
+
+    /* Testimonios */
+    .testimonios__grid {
+        gap: var(--space-lg);
+    }
+
+    /* Contacto */
+    .contacto__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contacto__info {
+        order: -1;
+    }
+
+    /* Footer */
+    .footer__container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-md);
+    }
+
+    .footer__links {
+        flex-wrap: wrap;
+        gap: var(--space-sm);
+    }
+
+    .footer__bottom .container {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+    }
+
+    /* Route line hidden on mobile */
+    .route-line {
+        display: none;
+    }
+
+    /* WhatsApp button smaller */
+    .whatsapp-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 1.4rem;
+        bottom: 1.5rem;
+        right: 1.5rem;
+    }
+
+    .whatsapp-btn__tooltip {
+        display: none;
+    }
+}
+
+/* ============================================
+   SMALL MOBILE (max-width: 480px)
+   ============================================ */
+@media (max-width: 480px) {
+    .hero__ctas {
+        flex-direction: column;
+    }
+
+    .hero__ctas .btn {
+        width: 100%;
+    }
+
+    .diferenciador {
+        flex-direction: column;
+        gap: var(--space-xs);
+    }
+
+    .diferenciador__numero {
+        font-size: 1.8rem;
+    }
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
         scroll-behavior: auto !important;
+    }
+
+    .route-line {
+        display: none;
+    }
+
+    .hero__label,
+    .hero__title,
+    .hero__subtitle,
+    .hero__ctas,
+    .hero__scroll-indicator,
+    .servicios__panel,
+    .diferenciador,
+    .testimonio,
+    .section__header,
+    .whatsapp-btn {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+
+    .contacto__form .form-group,
+    .contacto__form .btn {
+        opacity: 1 !important;
+        transform: none !important;
     }
 }
