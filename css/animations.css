@@ -16,8 +16,8 @@
     opacity: 0;
 }
 
-/* Service panels (all but first start hidden) */
-.servicios__panel:not(:first-child) {
+/* Service panels (2nd and 3rd start hidden) */
+.servicios__panel + .servicios__panel {
     opacity: 0;
 }
 
