@@ -61,7 +61,7 @@
 }
 
 /* Route line */
-.route-line__path {
+.route-line__progress {
     stroke-dasharray: var(--route-length, 5000);
     stroke-dashoffset: var(--route-length, 5000);
 }
@@ -82,7 +82,7 @@
 .hero__subtitle,
 .hero__ctas,
 .servicios__panel,
-.route-line__path {
+.route-line__progress {
     will-change: transform, opacity;
 }
 

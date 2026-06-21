@@ -69,14 +69,10 @@ document.addEventListener('DOMContentLoaded', () => {
             onEnter: () => {
                 navbar.classList.remove('navbar--transparent');
                 navbar.classList.add('navbar--solid');
-                gsap.to('.navbar__logo-img--white', { opacity: 0, duration: 0.3 });
-                gsap.to('.navbar__logo-img--dark', { opacity: 1, duration: 0.3 });
             },
             onLeaveBack: () => {
                 navbar.classList.remove('navbar--solid');
                 navbar.classList.add('navbar--transparent');
-                gsap.to('.navbar__logo-img--white', { opacity: 1, duration: 0.3 });
-                gsap.to('.navbar__logo-img--dark', { opacity: 0, duration: 0.3 });
             }
         });
     }
@@ -88,9 +84,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (isMobile) return;
 
         const svg = document.querySelector('.route-line');
-        const path = document.querySelector('.route-line__path');
+        const roadPath = document.querySelector('.route-line__road');
+        const progressPath = document.querySelector('.route-line__progress');
         const stations = document.querySelectorAll('.route-line__station');
-        if (!svg || !path) return;
+        if (!svg || !roadPath || !progressPath) return;
 
         const pageHeight = document.body.scrollHeight;
         const pageWidth = window.innerWidth;
@@ -119,15 +116,16 @@ document.addEventListener('DOMContentLoaded', () => {
             `C ${rightX} ${contactoTop}, ${cx} ${contactoTop * 1.02}, ${cx} ${contactoTop * 1.05}`
         ].join(' ');
 
-        path.setAttribute('d', d);
+        // Both paths share the same shape
+        roadPath.setAttribute('d', d);
+        progressPath.setAttribute('d', d);
 
-        const pathLength = path.getTotalLength();
-        path.style.setProperty('--route-length', pathLength);
-        path.style.strokeDasharray = pathLength;
-        path.style.strokeDashoffset = pathLength;
+        // Progress path draws on scroll
+        const pathLength = progressPath.getTotalLength();
+        progressPath.style.strokeDasharray = pathLength;
+        progressPath.style.strokeDashoffset = pathLength;
 
-        // Animate path draw with scroll
-        gsap.to(path, {
+        gsap.to(progressPath, {
             strokeDashoffset: 0,
             ease: 'none',
             scrollTrigger: {
@@ -142,7 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const stationPositions = [0.15, 0.35, 0.55, 0.75, 0.92];
         stations.forEach((station, i) => {
             if (stationPositions[i] !== undefined) {
-                const point = path.getPointAtLength(pathLength * stationPositions[i]);
+                const point = progressPath.getPointAtLength(pathLength * stationPositions[i]);
                 station.setAttribute('cx', point.x);
                 station.setAttribute('cy', point.y);
 
@@ -182,7 +180,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     start: 'top top',
                     end: 'bottom bottom',
                     scrub: 0.3,
-                    pin: '.servicios__container',
                     onUpdate: (self) => {
                         const progress = self.progress;
                         if (progressFill) {
