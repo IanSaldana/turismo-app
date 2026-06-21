@@ -45,6 +45,21 @@ document.addEventListener('DOMContentLoaded', () => {
             mapaIframe.src = CONFIG.mapaEmbed;
         }
 
+        // ---- Inject: Service panel text from config ----
+        document.querySelectorAll('[data-service]').forEach(panel => {
+            const id = panel.getAttribute('data-service');
+            const service = CONFIG.servicios.find(s => s.id === id);
+            if (!service) return;
+            const label = panel.querySelector('.servicios__label');
+            const title = panel.querySelector('.servicios__title');
+            const desc = panel.querySelector('.servicios__desc');
+            const cta = panel.querySelector('.servicios__cta');
+            if (label) label.textContent = service.titulo;
+            if (title) title.textContent = service.subtitulo;
+            if (desc) desc.textContent = service.descripcion;
+            if (cta) cta.textContent = service.cta;
+        });
+
         // ---- Generate: Service features ----
         document.querySelectorAll('[data-service-features]').forEach(ul => {
             const index = parseInt(ul.getAttribute('data-service-features'));
