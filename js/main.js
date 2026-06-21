@@ -94,6 +94,8 @@ document.addEventListener('DOMContentLoaded', () => {
             CONFIG.diferenciadores.forEach((d, i) => {
                 const item = document.createElement('div');
                 item.className = 'diferenciador' + (i === 0 ? ' active' : '');
+                item.style.opacity = i === 0 ? '1' : '0';
+                item.style.transform = i === 0 ? 'translateX(0)' : 'translateX(60px)';
                 item.innerHTML = `
                     <span class="diferenciador__numero">${d.numero}</span>
                     <div class="diferenciador__content">
