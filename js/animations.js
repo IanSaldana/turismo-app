@@ -178,8 +178,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 scrollTrigger: {
                     trigger: '.servicios__container',
                     start: 'top top',
-                    end: '+=200%',
-                    scrub: 0.3,
+                    end: '+=250%',
+                    scrub: 0.5,
                     pin: true,
                     onUpdate: (self) => {
                         const progress = self.progress;
@@ -194,12 +194,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
 
-            // Panel transitions
+            // Panel transitions — equal thirds
             pinTL
-                .to(panels[0], { opacity: 0, y: -40, duration: 0.3 }, 0.28)
-                .to(panels[1], { opacity: 1, y: 0, duration: 0.3 }, 0.33)
-                .to(panels[1], { opacity: 0, y: -40, duration: 0.3 }, 0.61)
-                .to(panels[2], { opacity: 1, y: 0, duration: 0.3 }, 0.66);
+                .to(panels[0], { opacity: 0, y: -30, duration: 0.08 }, 0.30)
+                .to(panels[1], { opacity: 1, y: 0, duration: 0.08 }, 0.34)
+                .to(panels[1], { opacity: 0, y: -30, duration: 0.08 }, 0.63)
+                .to(panels[2], { opacity: 1, y: 0, duration: 0.08 }, 0.67);
         }
     } else {
         // Mobile: show all panels, simple reveal
