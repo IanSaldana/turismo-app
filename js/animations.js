@@ -176,10 +176,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (panels.length > 1) {
             const pinTL = gsap.timeline({
                 scrollTrigger: {
-                    trigger: '.servicios__pin-wrapper',
+                    trigger: '.servicios__container',
                     start: 'top top',
-                    end: 'bottom bottom',
+                    end: '+=200%',
                     scrub: 0.3,
+                    pin: true,
                     onUpdate: (self) => {
                         const progress = self.progress;
                         if (progressFill) {
@@ -236,22 +237,64 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ============================================
-    // DIFERENCIADORES — Stagger Reveal
+    // DIFERENCIADORES — Animated Carousel
     // ============================================
-    const diferenciadores = gsap.utils.toArray('.diferenciador');
-    if (diferenciadores.length) {
-        gsap.to(diferenciadores, {
-            opacity: 1,
-            y: 0,
-            stagger: 0.15,
-            duration: 0.7,
-            ease: 'power3.out',
-            scrollTrigger: {
-                trigger: '.diferenciadores__grid',
-                start: 'top 75%',
-                toggleActions: 'play none none none'
+    const difItems = gsap.utils.toArray('.diferenciador');
+    const difDots = gsap.utils.toArray('.diferenciadores__dot');
+
+    if (difItems.length > 1) {
+        let currentDif = 0;
+        let difInterval;
+
+        // Set initial state: first visible, rest hidden
+        gsap.set(difItems[0], { opacity: 1, x: 0 });
+        gsap.set(difItems.slice(1), { opacity: 0, x: 60 });
+
+        function showDiferenciador(index) {
+            if (index === currentDif) return;
+            const outgoing = difItems[currentDif];
+            const incoming = difItems[index];
+
+            gsap.to(outgoing, { opacity: 0, x: -60, duration: 0.5, ease: 'power2.in' });
+            gsap.fromTo(incoming,
+                { opacity: 0, x: 60 },
+                { opacity: 1, x: 0, duration: 0.6, ease: 'power3.out', delay: 0.1 }
+            );
+
+            difDots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+
+            currentDif = index;
+        }
+
+        function nextDiferenciador() {
+            showDiferenciador((currentDif + 1) % difItems.length);
+        }
+
+        // Auto-rotate every 4 seconds
+        difInterval = setInterval(nextDiferenciador, 4000);
+
+        // Click dots to navigate
+        difDots.forEach((dot, i) => {
+            dot.addEventListener('click', () => {
+                clearInterval(difInterval);
+                showDiferenciador(i);
+                difInterval = setInterval(nextDiferenciador, 4000);
+            });
+        });
+
+        // Reveal the section on scroll
+        ScrollTrigger.create({
+            trigger: '.diferenciadores',
+            start: 'top 80%',
+            once: true,
+            onEnter: () => {
+                gsap.to(difItems[0], { opacity: 1, x: 0, duration: 0.7, ease: 'power3.out' });
             }
         });
+    } else if (difItems.length === 1) {
+        gsap.set(difItems[0], { opacity: 1, x: 0 });
     }
 
     // ============================================

@@ -71,13 +71,14 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // ---- Generate: Diferenciadores ----
+        // ---- Generate: Diferenciadores (carousel) ----
         const diffGrid = document.getElementById('diferenciadoresGrid');
+        const diffDots = document.getElementById('diferenciadorDots');
         if (diffGrid && CONFIG.diferenciadores) {
             diffGrid.innerHTML = '';
-            CONFIG.diferenciadores.forEach(d => {
+            CONFIG.diferenciadores.forEach((d, i) => {
                 const item = document.createElement('div');
-                item.className = 'diferenciador';
+                item.className = 'diferenciador' + (i === 0 ? ' active' : '');
                 item.innerHTML = `
                     <span class="diferenciador__numero">${d.numero}</span>
                     <div class="diferenciador__content">
@@ -87,6 +88,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 `;
                 diffGrid.appendChild(item);
             });
+
+            if (diffDots) {
+                diffDots.innerHTML = '';
+                CONFIG.diferenciadores.forEach((_, i) => {
+                    const dot = document.createElement('button');
+                    dot.className = 'diferenciadores__dot' + (i === 0 ? ' active' : '');
+                    dot.setAttribute('aria-label', `Ver diferenciador ${i + 1}`);
+                    dot.dataset.index = i;
+                    diffDots.appendChild(dot);
+                });
+            }
         }
 
         // ---- Generate: Testimonios ----

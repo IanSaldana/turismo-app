@@ -21,10 +21,9 @@
     opacity: 0;
 }
 
-/* Diferenciadores */
+/* Diferenciadores — carousel handles visibility via gsap.set() */
 .diferenciador {
     opacity: 0;
-    transform: translateY(40px);
 }
 
 /* Testimonios */

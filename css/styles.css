@@ -75,7 +75,7 @@ html {
 body {
     font-family: var(--font-body);
     font-weight: 400;
-    font-size: 1rem;
+    font-size: 1.0625rem;
     line-height: 1.75;
     color: var(--color-text);
     background-color: var(--color-niebla);
@@ -170,7 +170,7 @@ textarea:focus-visible {
 
 .section__title {
     font-family: var(--font-display);
-    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-size: clamp(2rem, 4.5vw, 3.2rem);
     font-weight: 400;
     line-height: 1.2;
     color: var(--color-text);
@@ -178,7 +178,7 @@ textarea:focus-visible {
 }
 
 .section__subtitle {
-    font-size: 1rem;
+    font-size: 1.1rem;
     color: var(--color-text-soft);
     margin-top: var(--space-xs);
     max-width: 55ch;
@@ -189,11 +189,11 @@ textarea:focus-visible {
    ============================================ */
 .btn {
     display: inline-block;
-    padding: 0.875rem 2rem;
+    padding: 1rem 2.2rem;
     border-radius: 4px;
     font-family: var(--font-body);
     font-weight: 500;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     letter-spacing: 0.02em;
     text-align: center;
     transition: background-color var(--duration-hover) ease,
@@ -246,16 +246,16 @@ textarea:focus-visible {
 .route-line__road {
     fill: none;
     stroke: var(--color-madera);
-    stroke-width: 3;
-    stroke-opacity: 0.12;
+    stroke-width: 6;
+    stroke-opacity: 0.1;
     stroke-linecap: round;
-    stroke-dasharray: 14 10;
+    stroke-dasharray: 18 12;
 }
 
 .route-line__progress {
     fill: none;
     stroke: var(--color-madera);
-    stroke-width: 2.5;
+    stroke-width: 4;
     stroke-opacity: 0.35;
     stroke-linecap: round;
 }
@@ -456,7 +456,7 @@ textarea:focus-visible {
 }
 
 .hero__subtitle {
-    font-size: clamp(1rem, 2vw, 1.15rem);
+    font-size: clamp(1.05rem, 2.2vw, 1.25rem);
     color: var(--color-espuma);
     opacity: 0.75;
     margin-top: var(--space-md);
@@ -508,17 +508,14 @@ textarea:focus-visible {
 }
 
 .servicios__pin-wrapper {
-    height: 300vh;
+    position: relative;
 }
 
 .servicios__container {
-    position: sticky;
-    top: 0;
+    position: relative;
     width: 100%;
     height: 100vh;
     overflow: hidden;
-    display: flex;
-    align-items: center;
 }
 
 .servicios__progress {
@@ -599,7 +596,7 @@ textarea:focus-visible {
 
 .servicios__title {
     font-family: var(--font-display);
-    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-size: clamp(2rem, 4.5vw, 3rem);
     font-weight: 400;
     line-height: 1.15;
     color: var(--color-text);
@@ -607,7 +604,7 @@ textarea:focus-visible {
 }
 
 .servicios__desc {
-    font-size: 1rem;
+    font-size: 1.05rem;
     color: var(--color-text-soft);
     margin-top: var(--space-sm);
     max-width: 50ch;
@@ -625,7 +622,7 @@ textarea:focus-visible {
     display: flex;
     align-items: flex-start;
     gap: 0.6rem;
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: var(--color-text);
     line-height: 1.5;
 }
@@ -676,51 +673,78 @@ textarea:focus-visible {
 }
 
 /* ============================================
-   DIFERENCIADORES
+   DIFERENCIADORES (carousel animado)
    ============================================ */
 .diferenciadores {
     background: var(--color-niebla);
+    overflow: hidden;
 }
 
-.diferenciadores__grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-xl) var(--space-2xl);
+.diferenciadores__carousel {
+    position: relative;
+    min-height: 280px;
+    display: flex;
+    align-items: center;
 }
 
 .diferenciador {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
     display: flex;
-    gap: var(--space-md);
-    align-items: flex-start;
+    gap: var(--space-lg);
+    align-items: center;
+    padding: var(--space-lg) 0;
 }
 
 .diferenciador__numero {
     font-family: var(--font-mono);
-    font-size: clamp(2rem, 4vw, 3rem);
+    font-size: clamp(3.5rem, 7vw, 5.5rem);
     font-weight: 400;
     color: var(--color-oxido);
     line-height: 1;
     flex-shrink: 0;
-    min-width: 4ch;
+    opacity: 0.8;
 }
 
 .diferenciador__content {
-    padding-top: 0.3rem;
+    max-width: 500px;
 }
 
 .diferenciador__label {
-    font-family: var(--font-body);
-    font-size: 1rem;
-    font-weight: 500;
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 400;
     color: var(--color-text);
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.5rem;
 }
 
 .diferenciador__detalle {
-    font-size: 0.875rem;
+    font-size: 1.05rem;
     color: var(--color-text-soft);
-    line-height: 1.6;
-    max-width: 40ch;
+    line-height: 1.7;
+}
+
+.diferenciadores__dots {
+    display: flex;
+    gap: var(--space-xs);
+    margin-top: var(--space-lg);
+}
+
+.diferenciadores__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-canal);
+    opacity: 0.2;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+}
+
+.diferenciadores__dot.active {
+    opacity: 1;
+    transform: scale(1.3);
 }
 
 /* ============================================
